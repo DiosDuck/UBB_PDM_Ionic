@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bbb566dc-8c44-46f6-b827-d6a8245a9333" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemEdit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProps.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/components/ExploreContainer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/components/ExploreContainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/pages/Home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/pages/Home.tsx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jBquIq4Dp84t24PG0CuBBsBans" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/IonicApp/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Users\User\Desktop\An 3\Sem 1\PDM\Ionic\UBB_PDM_Ionic\IonicApp\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\An 3\Sem 1\PDM\Ionic\UBB_PDM_Ionic\IonicApp\src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bbb566dc-8c44-46f6-b827-d6a8245a9333" name="Default Changelist" comment="" />
+      <created>1603288053919</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603288053919</updated>
+      <workItem from="1603288055077" duration="2994000" />
+      <workItem from="1604316902815" duration="18748000" />
+      <workItem from="1604506493105" duration="1300000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="241" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604334907740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="241" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604334907740" />
+    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1604316977976">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604316977976" />
   </component>
 </project>

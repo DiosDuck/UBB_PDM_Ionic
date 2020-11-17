@@ -15,12 +15,10 @@ import { add } from 'ionicons/icons';
 import Item from './Item';
 import { getLogger } from '../core';
 import { ItemContext } from './ItemProvider';
-import {deleteItem} from "./itemApi";
-
 const log = getLogger('ItemList');
 
 const ItemList: React.FC<RouteComponentProps> = ({ history }) => {
-  const { items, fetching, fetchingError } = useContext(ItemContext);
+  const { items, fetching, fetchingError,deletedItem } = useContext(ItemContext);
   log('render');
   return (
     <IonPage>
@@ -34,7 +32,7 @@ const ItemList: React.FC<RouteComponentProps> = ({ history }) => {
         {items && (
           <IonList>
             {items.map(({ id, text}) =>
-              <Item key={id} id={id} text={text} onEdit={id => history.push(`/item/${id}`)} onDelete={(text,id) => deleteItem({id,text})}/>)}
+              <Item key={id} id={id} text={text} onEdit={id => history.push(`/item/${id}`)} onDelete={(text,id) => deletedItem && deletedItem({id,text})}/>)}
           </IonList>
         )}
         {fetchingError && (

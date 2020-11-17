@@ -11,27 +11,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbb566dc-8c44-46f6-b827-d6a8245a9333" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemEdit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/AuthProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/Login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/PrivateRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/authApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IonicApp/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/components/ExploreContainer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/components/ExploreContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/pages/Home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/pages/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +47,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/IonicApp/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Users\User\Desktop\An 3\Sem 1\PDM\Ionic\UBB_PDM_Ionic\IonicApp\node_modules\typescript\lib" />
@@ -65,7 +68,10 @@
       <updated>1603288053919</updated>
       <workItem from="1603288055077" duration="2994000" />
       <workItem from="1604316902815" duration="18748000" />
-      <workItem from="1604506493105" duration="1300000" />
+      <workItem from="1604506493105" duration="2027000" />
+      <workItem from="1605426710995" duration="27000" />
+      <workItem from="1605436633057" duration="3373000" />
+      <workItem from="1605598250806" duration="4744000" />
     </task>
     <servers />
   </component>
@@ -89,9 +95,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="241" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604334907740" />
-    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1604316977976">
+    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1605444315866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604316977976" />
+    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605444315866" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605646061079">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605646061079" />
   </component>
 </project>

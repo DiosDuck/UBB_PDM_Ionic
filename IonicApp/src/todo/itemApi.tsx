@@ -8,16 +8,20 @@ export const getItems: (token:string) => Promise<ItemProps[]> = token => {
   return withLogs(axios.get(itemUrl, authConfig(token)), 'getItems');
 }
 
+export const getItemsPart: (token: string, count: number, s: string) => Promise<ItemProps[]> = (token, count, s) => {
+  return withLogs(axios.get(`${itemUrl}/${s}/${count}`, authConfig(token)), 'getItems');
+}
+
 export const createItem: (token:string,item: ItemProps) => Promise<ItemProps[]> = (token,item) => {
   return withLogs(axios.post(itemUrl, item, authConfig(token)), 'createItem');
 }
 
 export const updateItem: (token:string,item: ItemProps) => Promise<ItemProps[]> = (token,item) => {
-  return withLogs(axios.put(`${itemUrl}/${item.id}`, item, authConfig(token)), 'updateItem');
+  return withLogs(axios.put(`${itemUrl}/${item._id}`, item, authConfig(token)), 'updateItem');
 }
 
 export const deleteItem: (token:string,item: ItemProps)=> Promise<ItemProps[]> = (token,item)=> {
-  return withLogs(axios.delete(`${itemUrl}/${item.id}`,authConfig(token)),'deleteItem');
+  return withLogs(axios.delete(`${itemUrl}/${item._id}`,authConfig(token)),'deleteItem');
 }
 
 interface MessageData {

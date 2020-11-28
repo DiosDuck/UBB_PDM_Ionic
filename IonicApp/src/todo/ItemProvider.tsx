@@ -2,23 +2,28 @@ import React, {useCallback, useContext, useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 import { getLogger } from '../core';
 import { ItemProps } from './ItemProps';
-import {createItem, deleteItem, getItems, newWebSocket, updateItem} from './itemApi';
+import {createItem, deleteItem, getItems, getItemsPart, newWebSocket, updateItem} from './itemApi';
 import {AuthContext} from "../auth";
 
 const log = getLogger('ItemProvider');
-
+const size=10;
 type SaveItemFn = (item: ItemProps) => Promise<any>;
-
+type ListItemsFn=(nr:number,s:string)=>Promise<any>;
 export interface ItemsState {
   items?: ItemProps[],
   fetching: boolean,
   fetchingError?: Error | null,
+  nextPage?: ListItemsFn,
+  filterPage?:ListItemsFn,
   saving: boolean,
   savingError?: Error | null,
   saveItem?: SaveItemFn,
   deleting: boolean,
   deletingError?: Error | null,
   deletedItem?: SaveItemFn,
+  all: boolean,
+  page: number,
+  filter: string
 }
 
 interface ActionProps {
@@ -30,11 +35,17 @@ const initialState: ItemsState = {
   fetching: false,
   saving: false,
   deleting:false,
+  all: false,
+  page: 0,
+  filter: ''
 };
 
 const FETCH_ITEMS_STARTED = 'FETCH_ITEMS_STARTED';
 const FETCH_ITEMS_SUCCEEDED = 'FETCH_ITEMS_SUCCEEDED';
 const FETCH_ITEMS_FAILED = 'FETCH_ITEMS_FAILED';
+const FETCH_ITEMS_PART_STARTED = 'FETCH_ITEMS_PART_STARTED';
+const FETCH_ITEMS_PART_SUCCEEDED = 'FETCH_ITEMS_PART_SUCCEEDED';
+const FETCH_ITEMS_PART_FAILED = 'FETCH_ITEMS_PART_FAILED';
 const SAVE_ITEM_STARTED = 'SAVE_ITEM_STARTED';
 const SAVE_ITEM_SUCCEEDED = 'SAVE_ITEM_SUCCEEDED';
 const SAVE_ITEM_FAILED = 'SAVE_ITEM_FAILED';
@@ -48,19 +59,32 @@ const reducer: (state: ItemsState, action: ActionProps) => ItemsState =
       case FETCH_ITEMS_STARTED:
         return { ...state, fetching: true, fetchingError: null };
       case FETCH_ITEMS_SUCCEEDED:
-        return { ...state, items: payload.items, fetching: false };
+        return { ...state, items: payload.items, fetching: false ,all:payload.items.length!==size,page:payload.page,filter:payload.filter};
       case FETCH_ITEMS_FAILED:
+        return { ...state, fetchingError: payload.error, fetching: false };
+      case FETCH_ITEMS_PART_STARTED:
+        return { ...state, fetching: true, fetchingError: null };
+      case FETCH_ITEMS_PART_SUCCEEDED:
+        const fullItems = [...(state.items || [])];
+        const partItem = payload.partItem;
+        partItem.forEach(function(el:ItemProps){
+          fullItems.push(el);
+        })
+        return { ...state, items:fullItems,fetching:false, saving: false,all:partItem.length!==size,page:payload.page,filter:payload.filter};
+      case FETCH_ITEMS_PART_FAILED:
         return { ...state, fetchingError: payload.error, fetching: false };
       case SAVE_ITEM_STARTED:
         return { ...state, savingError: null, saving: true };
       case SAVE_ITEM_SUCCEEDED:
         const items = [...(state.items || [])];
         const item = payload.item;
-        const index = items.findIndex(it => it.id === item.id);
+        const index = items.findIndex(it => it._id === item._id);
+        const all=state.all
         if (index === -1) {
-          items.splice(0, 0, item);
+          if(all)
+            items.splice(0, 0, item);
         } else {
-          items[index] = item;
+            items[index] = item;
         }
 
         return { ...state, items, saving: false };
@@ -71,8 +95,9 @@ const reducer: (state: ItemsState, action: ActionProps) => ItemsState =
       case DELETE_ITEM_SUCCEEDED:
         const itemsDeleted = [...(state.items || [])];
         const itemDeleted = payload.item;
-        const indexItemDeleted=itemsDeleted.findIndex(it=> it.id===itemDeleted.id);
-        itemsDeleted.splice(indexItemDeleted,1);
+        const indexItemDeleted=itemsDeleted.findIndex(it=> it._id===itemDeleted._id);
+        if(indexItemDeleted!==-1)
+          itemsDeleted.splice(indexItemDeleted,1);
         return { ...state, items: itemsDeleted, deleting: false };
       case DELETE_ITEM_FAILED:
         return { ...state, deletingError: payload.error, deleting: false };
@@ -90,12 +115,14 @@ interface ItemProviderProps {
 export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
   const {token}=useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { items, fetching, fetchingError, saving, savingError ,deleting,deletingError} = state;
+  const { items, fetching, fetchingError, saving, savingError ,deleting,deletingError,all,page,filter} = state;
   useEffect(getItemsEffect, [token]);
   useEffect(wsEffect, [token]);
   const saveItem = useCallback<SaveItemFn>(saveItemCallback, [token]);
   const deletedItem=useCallback<SaveItemFn>(deleteItemCallback,[token]);
-  const value = { items, fetching, fetchingError, saving, savingError, saveItem ,deleting,deletingError,deletedItem};
+  const nextPage=useCallback<ListItemsFn>(fetchItemsPart,[token]);
+  const filterPage=useCallback<ListItemsFn>(fetchItemsFilter,[token]);
+  const value = { items, fetching, fetchingError, saving, savingError, saveItem ,deleting,deletingError,deletedItem,all,nextPage,filterPage,page,filter};
   log('returns');
   return (
     <ItemContext.Provider value={value}>
@@ -109,7 +136,6 @@ export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
     return () => {
       canceled = true;
     }
-
     async function fetchItems() {
       if(!token?.trim()){
         return;
@@ -117,10 +143,10 @@ export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
       try {
         log('fetchItems started');
         dispatch({ type: FETCH_ITEMS_STARTED });
-        const items = await getItems(token);
+        const items = await getItemsPart(token,0,'');
         log('fetchItems succeeded');
         if (!canceled) {
-          dispatch({ type: FETCH_ITEMS_SUCCEEDED, payload: { items } });
+          dispatch({ type: FETCH_ITEMS_SUCCEEDED, payload: { items,page:0,filter:'' } });
         }
       } catch (error) {
         log('fetchItems failed');
@@ -129,13 +155,40 @@ export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
     }
   }
 
+  async function fetchItemsPart(nr:number,s: string) {
+    try {
+      log('fetchItemsPart started');
+      dispatch({ type: FETCH_ITEMS_PART_STARTED });
+
+      const items = await (getItemsPart(token,nr,s));
+      log('fetchItemPart succeeded');
+      dispatch({ type: FETCH_ITEMS_PART_SUCCEEDED, payload: { partItem:items,page: nr,filter: s } });
+    } catch (error) {
+      log('fetchItemPart failed');
+      dispatch({ type: FETCH_ITEMS_PART_FAILED, payload: { error } });
+    }
+  }
+
+  async function fetchItemsFilter(nr:number,s: string) {
+    try {
+      log('fetchItems started');
+      dispatch({ type: FETCH_ITEMS_STARTED });
+      const items = await (getItemsPart(token,nr,s));
+      log('fetchItemst succeeded');
+      dispatch({ type: FETCH_ITEMS_SUCCEEDED, payload: { items:items,page: nr,filter: s } });
+    } catch (error) {
+      log('fetchItemPart failed');
+      dispatch({ type: FETCH_ITEMS_FAILED, payload: { error } });
+    }
+  }
+
   async function saveItemCallback(item: ItemProps) {
     try {
       log('saveItem started');
       dispatch({ type: SAVE_ITEM_STARTED });
-      const savedItem = await (item.id ? updateItem(token,item) : createItem(token,item));
+      const savedItem = await (item._id ? updateItem(token,item) : createItem(token,item));
       log('saveItem succeeded');
-      dispatch({ type: SAVE_ITEM_SUCCEEDED, payload: { item: savedItem } });
+      //dispatch({ type: SAVE_ITEM_SUCCEEDED, payload: { item: savedItem } });
     } catch (error) {
       log('saveItem failed');
       dispatch({ type: SAVE_ITEM_FAILED, payload: { error } });
@@ -145,10 +198,11 @@ export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
   async function deleteItemCallback(item: ItemProps) {
     try {
       log('deleteItem started');
+      log(item._id);
       dispatch({ type: DELETE_ITEM_STARTED });
       const deletedItem = await (deleteItem(token,item));
       log('deleteItem succeeded');
-      dispatch({ type: DELETE_ITEM_SUCCEEDED, payload: { item: deletedItem } });
+      //dispatch({ type: DELETE_ITEM_SUCCEEDED, payload: { item: deletedItem } });
     } catch (error) {
       log('deleteItem failed');
       dispatch({ type: DELETE_ITEM_FAILED, payload: { error } });
@@ -168,6 +222,9 @@ export const ItemProvider: React.FC<ItemProviderProps> = ({ children }) => {
         log(`ws message, item ${type}`);
         if (type === 'created' || type === 'updated') {
           dispatch({ type: SAVE_ITEM_SUCCEEDED, payload: { item } });
+        }
+        if(type==='deleted'){
+          dispatch({type:DELETE_ITEM_SUCCEEDED,payload:{item}});
         }
       });
     }

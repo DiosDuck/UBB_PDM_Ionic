@@ -10,17 +10,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbb566dc-8c44-46f6-b827-d6a8245a9333" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/AuthProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/PrivateRoute.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/authApi.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IonicApp/src/auth/index.tsx" afterDir="false" />
+    <list default="true" id="bbb566dc-8c44-46f6-b827-d6a8245a9333" name="Default Changelist" comment="Lab4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/core/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/auth/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/auth/AuthProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/Item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemEdit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProps.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/ItemProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/IonicApp/src/todo/itemApi.tsx" afterDir="false" />
     </list>
@@ -71,8 +67,23 @@
       <workItem from="1604506493105" duration="2027000" />
       <workItem from="1605426710995" duration="27000" />
       <workItem from="1605436633057" duration="3373000" />
-      <workItem from="1605598250806" duration="4744000" />
+      <workItem from="1605598250806" duration="4838000" />
+      <workItem from="1605647763631" duration="3781000" />
+      <workItem from="1605700682549" duration="48000" />
+      <workItem from="1606045506701" duration="9655000" />
+      <workItem from="1606119673586" duration="880000" />
+      <workItem from="1606210988668" duration="2232000" />
+      <workItem from="1606300120999" duration="1851000" />
+      <workItem from="1606567169277" duration="2491000" />
     </task>
+    <task id="LOCAL-00001" summary="Lab4">
+      <created>1605646682346</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605646682346</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,15 +101,23 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Lab4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab4" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="241" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604334907740">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="241" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604334907740" />
-    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1605444315866">
+    <state x="284" y="238" key="#com.intellij.ide.util.MemberChooser" timestamp="1606080004318">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605444315866" />
+    <state x="284" y="238" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606080004318" />
+    <state x="301" y="232" key="FileChooserDialogImpl" timestamp="1606061429293">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="301" y="232" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606061429293" />
     <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1605646061079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
